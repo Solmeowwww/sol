@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solene | SolLinks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #ffe0ec, #ffd3f5);
+      padding: 30px;
+    }
+
+    .profile-img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 26px;
+      color: #e91e63;
+    }
+
+    .username {
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 80%;
+      margin: 12px auto;
+      padding: 14px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .facebook {
+      background: #1877f2;
+    }
+
+    .facebook:hover {
+      background: #145dd1;
+    }
+
+    .discord {
+      background: #5865F2;
+    }
+
+    .discord:hover {
+      background: #4853d9;
+    }
+
+    .instagram {
+      background: #E1306C;
+    }
+
+    .instagram:hover {
+      background: #c12560;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="sol.jpg" alt="Profile" class="profile-img" />
+  <h1>Solene</h1>
+  <p class="username">@_soleneeqt</p>
+  <p>Streamer</p>
+
+  <a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn facebook">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
+    Facebook Page
+  </a>
+
+  <a href="https://discord.gg/bPEamU9MaW" class="btn discord">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" class="icon" alt="Discord" />
+    Discord
+  </a>
+
+  <div class="btn instagram" onclick="showInstagramAlert()">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="icon" alt="Instagram" />
+    Instagram
+  </div>
+
+  <script>
+    function showInstagramAlert() {
+      alert("⚠️ Instagram is not available right now.");
+    }
+  </script>
+
+</body>
+</html>
