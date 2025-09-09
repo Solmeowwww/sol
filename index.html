@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Solene | SolLinks</title>
   <style>
-    /* General styling */
+    
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -21,14 +21,13 @@
       min-height: 100vh;
     }
 
-    /* Fade In */
-    @keyframes fadeIn {
+     @keyframes fadeIn {
       to {
         opacity: 1;
       }
     }
 
-    /* Canvas full screen behind content */
+  
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -39,7 +38,7 @@
       z-index: 0;
     }
 
-    /* Profile image */
+   
     .profile-img {
       border-radius: 50%;
       width: 120px;
@@ -56,7 +55,7 @@
       cursor: pointer;
     }
 
-    /* Bounce animation */
+  
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -66,7 +65,7 @@
       }
     }
 
-    /* Headings and text */
+  
     h1 {
       margin: 10px 0 5px;
       font-size: 26px;
@@ -89,7 +88,7 @@
       z-index: 10;
     }
 
-    /* Icons */
+  
     .icon {
       width: 22px;
       height: 22px;
@@ -97,7 +96,7 @@
       pointer-events: none;
     }
 
-    /* Buttons */
+  
     .btn-custom:active,
     .btn-custom:focus {
       outline: none;
@@ -118,9 +117,9 @@
       z-index: 10;
     }
 
-    /* Individual buttons */
+   
 
-    /* YNAGUINID */
+   
     .btn-ynaguinid {
       background: #1877f2;
       position: relative;
@@ -143,7 +142,7 @@
       box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
     }
 
-    /* FACEBOOK */
+  
     .btn-facebook {
       background: #1877f2;
       position: relative;
@@ -166,7 +165,7 @@
       box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
     }
 
-    /* DISCORD */
+   
     .btn-discord {
       background: #5865F2;
       position: relative;
@@ -189,7 +188,7 @@
       box-shadow: 0 8px 16px rgba(72, 83, 217, 0.6);
     }
 
-    /* EMAIL */
+   
     .btn-email {
       background: #D44638;
       position: relative;
@@ -213,7 +212,7 @@
       box-shadow: 0 8px 16px rgba(187, 59, 47, 0.6);
     }
 
-    /* Email container */
+   
     #email-container {
       margin: 0 auto 20px;
       padding: 12px 20px;
@@ -248,7 +247,7 @@
       background: #c41452;
     }
 
-    /* Responsive adjustments */
+   
     @media screen and (max-width: 400px) {
       .btn-facebook,
       .btn-discord,
@@ -262,7 +261,7 @@
 </head>
 <body>
 
-  <!-- Particle Canvas -->
+ 
   <canvas id="particle-canvas"></canvas>
 
   <img src="sol.jpg" alt="Profile" class="profile-img" />
@@ -270,42 +269,42 @@
   <p class="username">@_soleneeqt</p>
   <p>Streamer</p>
 
-  <!-- YNAGUINID -->
+
   <a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn-custom btn-ynaguinid" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
     YNAGUINID PAGE
   </a>
 
-  <!-- Facebook -->
+
   <a href="https://www.facebook.com/solene.clm" class="btn-custom btn-facebook" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
     Facebook
   </a>
 
-  <!-- Discord -->
+
   <a href="https://discord.gg/bPEamU9MaW" class="btn-custom btn-discord" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" class="icon" alt="Discord" />
     Discord
   </a>
 
-  <!-- Email -->
+  
   <button id="show-email-btn" class="btn-custom btn-email" type="button">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" alt="Gmail" />
     Email
   </button>
 
-  <!-- Email Container -->
+
   <div id="email-container">
     <span id="email-text">📩 clmsolene20@gmail.com</span>
     <button id="copy-btn">Copy</button>
   </div>
 
   <script>
-    // Mobile detection for petal count
+   
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const PETAL_COUNT = isMobile ? 30 : 60; // fewer petals on mobile
+    const PETAL_COUNT = isMobile ? 30 : 60; 
 
-    // Canvas & petal setup
+   
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -319,7 +318,7 @@
     window.addEventListener('resize', resize);
     resize();
 
-    // Petal class (rose-like petal shape)
+  
     class Petal {
       constructor() {
         this.reset();
@@ -351,7 +350,7 @@
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle);
 
-        // Draw simple rose-like petal shape (oval + subtle curves)
+       
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -371,13 +370,13 @@
       }
     }
 
-    // Create petals array
+    
     const petals = [];
     for (let i = 0; i < PETAL_COUNT; i++) {
       petals.push(new Petal());
     }
 
-    // Animation loop
+    
     function animate() {
       ctx.clearRect(0, 0, width, height);
       petals.forEach(p => {
@@ -388,7 +387,7 @@
     }
     animate();
 
-    // Email button toggle & copy
+  
     const showEmailBtn = document.getElementById('show-email-btn');
     const emailContainer = document.getElementById('email-container');
     const copyBtn = document.getElementById('copy-btn');
@@ -416,7 +415,7 @@
         });
     });
 
-    // Profile bounce pause on tap (mobile)
+ 
     const profileImg = document.querySelector('.profile-img');
     profileImg.addEventListener('touchstart', () => {
       if (profileImg.style.animationPlayState === 'paused') {
@@ -430,3 +429,4 @@
 
 </body>
 </html>
+
