@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Solene | SolLinks</title>
   <style>
-    
+    /* General styling */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       text-align: center;
       background: linear-gradient(to bottom right, #ffe0ec, #ffe0ec);
       padding: 30px;
@@ -21,13 +19,14 @@
       min-height: 100vh;
     }
 
-     @keyframes fadeIn {
+    /* Fade In Animation */
+    @keyframes fadeIn {
       to {
         opacity: 1;
       }
     }
 
-  
+    /* Particle canvas */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -38,7 +37,6 @@
       z-index: 0;
     }
 
-   
     .profile-img {
       border-radius: 50%;
       width: 120px;
@@ -52,10 +50,8 @@
       animation: bounce 3s ease-in-out infinite;
       position: relative;
       z-index: 10;
-      cursor: pointer;
     }
 
-  
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -65,7 +61,6 @@
       }
     }
 
-  
     h1 {
       margin: 10px 0 5px;
       font-size: 26px;
@@ -88,7 +83,6 @@
       z-index: 10;
     }
 
-  
     .icon {
       width: 22px;
       height: 22px;
@@ -96,13 +90,13 @@
       pointer-events: none;
     }
 
-  
     .btn-custom:active,
     .btn-custom:focus {
       outline: none;
       transform: scale(0.97);
       box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.3);
     }
+
     .btn-custom {
       font-weight: bold;
       border: none;
@@ -117,24 +111,31 @@
       z-index: 10;
     }
 
-   
-
-   
+    /* Fixed button size for all screens */
+    .btn-facebook,
+    .btn-discord,
+    .btn-email,
     .btn-ynaguinid {
-      background: #1877f2;
-      position: relative;
-      width: 180px;
+      width: 180px !important;
       height: 40px;
       line-height: 40px;
       padding-left: 80px;
       text-align: left;
       display: block;
     }
+
+    .btn-facebook .icon,
+    .btn-discord .icon,
+    .btn-email .icon,
     .btn-ynaguinid .icon {
       position: absolute;
       left: 47px;
       top: 50%;
       transform: translateY(-50%);
+    }
+
+    .btn-ynaguinid {
+      background: #1877f2;
     }
     .btn-ynaguinid:hover {
       background: #145dd1;
@@ -142,22 +143,8 @@
       box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
     }
 
-  
     .btn-facebook {
       background: #1877f2;
-      position: relative;
-      width: 180px;
-      height: 40px;
-      line-height: 40px;
-      padding-left: 80px;
-      text-align: left;
-      display: block;
-    }
-    .btn-facebook .icon {
-      position: absolute;
-      left: 47px;
-      top: 50%;
-      transform: translateY(-50%);
     }
     .btn-facebook:hover {
       background-color: #145dd1;
@@ -165,22 +152,8 @@
       box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
     }
 
-   
     .btn-discord {
       background: #5865F2;
-      position: relative;
-      width: 180px;
-      height: 40px;
-      line-height: 40px;
-      padding-left: 80px;
-      text-align: left;
-      display: block;
-    }
-    .btn-discord .icon {
-      position: absolute;
-      left: 47px;
-      top: 50%;
-      transform: translateY(-50%);
     }
     .btn-discord:hover {
       background: #4853d9;
@@ -188,23 +161,9 @@
       box-shadow: 0 8px 16px rgba(72, 83, 217, 0.6);
     }
 
-   
     .btn-email {
       background: #D44638;
-      position: relative;
-      width: 257px;
-      height: 40px;
-      line-height: 40px;
-      padding-left: 80px;
-      text-align: left;
-      display: block;
-      border: none;
-    }
-    .btn-email .icon {
-      position: absolute;
-      left: 47px;
-      top: 50%;
-      transform: translateY(-50%);
+      width: 257px !important;
     }
     .btn-email:hover {
       background: #bb3b2f;
@@ -212,7 +171,6 @@
       box-shadow: 0 8px 16px rgba(187, 59, 47, 0.6);
     }
 
-   
     #email-container {
       margin: 0 auto 20px;
       padding: 12px 20px;
@@ -229,10 +187,6 @@
       z-index: 10;
     }
 
-    #email-text {
-      user-select: all;
-    }
-
     #copy-btn {
       background: #e91e63;
       border: none;
@@ -243,190 +197,150 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     #copy-btn:hover {
       background: #c41452;
-    }
-
-   
-    @media screen and (max-width: 400px) {
-      .btn-facebook,
-      .btn-discord,
-      .btn-email,
-      .btn-ynaguinid,
-      #email-container {
-        width: 90% !important;
-      }
     }
   </style>
 </head>
 <body>
 
- 
-  <canvas id="particle-canvas"></canvas>
+<canvas id="particle-canvas"></canvas>
 
-  <img src="sol.jpg" alt="Profile" class="profile-img" />
-  <h1>Solene</h1>
-  <p class="username">@_soleneeqt</p>
-  <p>Streamer</p>
+<img src="sol.jpg" alt="Profile" class="profile-img" />
+<h1>Solene</h1>
+<p class="username">@_soleneeqt</p>
+<p>Streamer</p>
 
+<a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn-custom btn-ynaguinid" target="_blank">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" /> YNAGUINID PAGE
+</a>
 
-  <a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn-custom btn-ynaguinid" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
-    YNAGUINID PAGE
-  </a>
+<a href="https://www.facebook.com/solene.clm" class="btn-custom btn-facebook" target="_blank">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" /> Facebook
+</a>
 
+<a href="https://discord.gg/bPEamU9MaW" class="btn-custom btn-discord" target="_blank">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" class="icon" /> Discord
+</a>
 
-  <a href="https://www.facebook.com/solene.clm" class="btn-custom btn-facebook" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
-    Facebook
-  </a>
+<button id="show-email-btn" class="btn-custom btn-email" type="button">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" /> Email
+</button>
 
+<div id="email-container">
+  <span id="email-text">📩 clmsolene20@gmail.com</span>
+  <button id="copy-btn">Copy</button>
+</div>
 
-  <a href="https://discord.gg/bPEamU9MaW" class="btn-custom btn-discord" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" class="icon" alt="Discord" />
-    Discord
-  </a>
+<script>
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
 
-  
-  <button id="show-email-btn" class="btn-custom btn-email" type="button">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" alt="Gmail" />
-    Email
-  </button>
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
 
+  window.addEventListener('resize', resize);
+  resize();
 
-  <div id="email-container">
-    <span id="email-text">📩 clmsolene20@gmail.com</span>
-    <button id="copy-btn">Copy</button>
-  </div>
-
-  <script>
-   
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const PETAL_COUNT = isMobile ? 30 : 60; 
-
-   
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
+  class Petal {
+    constructor() {
+      this.reset();
     }
-    window.addEventListener('resize', resize);
-    resize();
-
-  
-    class Petal {
-      constructor() {
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = 8 + Math.random() * 5;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = 0.5 + Math.random() * 0.5;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+      this.color = `rgba(255, 182, 193, ${0.6 + Math.random() * 0.4})`;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.angle += this.rotationSpeed;
+      if (this.y > height + this.size) {
         this.reset();
-      }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = 8 + Math.random() * 5;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = 0.5 + Math.random() * 0.5;
-        this.angle = Math.random() * 2 * Math.PI;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-        this.color = `rgba(255, 192, 203, ${0.6 + Math.random() * 0.4})`; // rose pink
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.angle += this.rotationSpeed;
-
-        if (this.y > height + this.size) {
-          this.x = Math.random() * width;
-          this.y = -this.size;
-        }
-        if (this.x > width + this.size) this.x = -this.size;
-        else if (this.x < -this.size) this.x = width + this.size;
-      }
-      draw(ctx) {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-
-       
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(
-          this.size * 0.2, -this.size * 0.6,
-          this.size * 0.8, -this.size * 0.4,
-          0, this.size
-        );
-        ctx.bezierCurveTo(
-          -this.size * 0.8, -this.size * 0.4,
-          -this.size * 0.2, -this.size * 0.6,
-          0, 0
-        );
-        ctx.fill();
-
-        ctx.restore();
+        this.y = -this.size;
       }
     }
-
-    
-    const petals = [];
-    for (let i = 0; i < PETAL_COUNT; i++) {
-      petals.push(new Petal());
+    draw(ctx) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(
+        this.size * 0.2, -this.size * 0.6,
+        this.size * 0.8, -this.size * 0.4,
+        0, this.size
+      );
+      ctx.bezierCurveTo(
+        -this.size * 0.8, -this.size * 0.4,
+        -this.size * 0.2, -this.size * 0.6,
+        0, 0
+      );
+      ctx.fill();
+      ctx.restore();
     }
+  }
 
-    
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      petals.forEach(p => {
-        p.update();
-        p.draw(ctx);
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  const PETAL_COUNT = isMobile ? 30 : 60;
+  const petals = Array.from({ length: PETAL_COUNT }, () => new Petal());
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    petals.forEach(p => {
+      p.update();
+      p.draw(ctx);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const showEmailBtn = document.getElementById('show-email-btn');
+  const emailContainer = document.getElementById('email-container');
+  const copyBtn = document.getElementById('copy-btn');
+  const emailText = document.getElementById('email-text').textContent;
+
+  showEmailBtn.addEventListener('click', () => {
+    const isVisible = emailContainer.style.display === 'flex';
+    emailContainer.style.display = isVisible ? 'none' : 'flex';
+    showEmailBtn.innerHTML = `
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" /> 
+      ${isVisible ? 'Email' : 'Hide Email'}
+    `;
+  });
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailText)
+      .then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy';
+        }, 2000);
+      })
+      .catch(() => {
+        alert('Failed to copy email.');
       });
-      requestAnimationFrame(animate);
-    }
-    animate();
+  });
 
-  
-    const showEmailBtn = document.getElementById('show-email-btn');
-    const emailContainer = document.getElementById('email-container');
-    const copyBtn = document.getElementById('copy-btn');
-    const emailText = document.getElementById('email-text').textContent;
-
-    showEmailBtn.addEventListener('click', () => {
-      const isVisible = emailContainer.style.display === 'flex';
-      emailContainer.style.display = isVisible ? 'none' : 'flex';
-      showEmailBtn.innerHTML = `
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" alt="Gmail" />
-        ${isVisible ? 'Email' : 'Hide Email'}
-      `;
-    });
-
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(emailText)
-        .then(() => {
-          copyBtn.textContent = 'Copied!';
-          setTimeout(() => {
-            copyBtn.textContent = 'Copy';
-          }, 2000);
-        })
-        .catch(() => {
-          alert('Failed to copy email.');
-        });
-    });
-
- 
-    const profileImg = document.querySelector('.profile-img');
-    profileImg.addEventListener('touchstart', () => {
-      if (profileImg.style.animationPlayState === 'paused') {
-        profileImg.style.animationPlayState = 'running';
-      } else {
-        profileImg.style.animationPlayState = 'paused';
-      }
-    });
-
-  </script>
+  // Tap to pause bounce on mobile
+  const profileImg = document.querySelector('.profile-img');
+  profileImg.addEventListener('touchstart', () => {
+    profileImg.style.animationPlayState =
+      profileImg.style.animationPlayState === 'paused' ? 'running' : 'paused';
+  });
+</script>
 
 </body>
 </html>
-
