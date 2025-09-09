@@ -5,118 +5,427 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Solene | SolLinks</title>
   <style>
+    /* General styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       text-align: center;
-      background: linear-gradient(to bottom right, #ffe0ec, #ffd3f5);
+      background: linear-gradient(to bottom right, #ffe0ec, #ffe0ec);
       padding: 30px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      overflow-x: hidden;
+      margin: 0;
+      position: relative;
+      min-height: 100vh;
     }
 
+    /* Fade In */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Canvas full screen behind content */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Profile image */
     .profile-img {
       border-radius: 50%;
       width: 120px;
       height: 120px;
       object-fit: cover;
-      border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 3px solid #fbb6ce;
+      box-shadow: 0 0 12px rgba(255, 182, 193, 0.4);
+      margin: 0 auto 10px;
+      display: block;
+      transition: transform 0.3s ease;
+      animation: bounce 3s ease-in-out infinite;
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
     }
 
+    /* Bounce animation */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* Headings and text */
     h1 {
       margin: 10px 0 5px;
       font-size: 26px;
       color: #e91e63;
+      position: relative;
+      z-index: 10;
     }
 
     .username {
       color: #888;
       margin-bottom: 5px;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 80%;
-      margin: 12px auto;
-      padding: 14px;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
-
-    .facebook {
-      background: #1877f2;
-    }
-
-    .facebook:hover {
-      background: #145dd1;
-    }
-
-    .discord {
-      background: #5865F2;
-    }
-
-    .discord:hover {
-      background: #4853d9;
-    }
-
-    .instagram {
-      background: #E1306C;
-    }
-
-    .instagram:hover {
-      background: #c12560;
-    }
-
-    .icon {
-      width: 22px;
-      height: 22px;
-      filter: brightness(0) invert(1);
+      position: relative;
+      z-index: 10;
     }
 
     p {
       color: #555;
       font-size: 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Icons */
+    .icon {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+      pointer-events: none;
+    }
+
+    /* Buttons */
+    .btn-custom:active,
+    .btn-custom:focus {
+      outline: none;
+      transform: scale(0.97);
+      box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.3);
+    }
+    .btn-custom {
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 0 12px rgba(255, 182, 193, 0.6);
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      margin: 12px auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Individual buttons */
+
+    /* YNAGUINID */
+    .btn-ynaguinid {
+      background: #1877f2;
+      position: relative;
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 80px;
+      text-align: left;
+      display: block;
+    }
+    .btn-ynaguinid .icon {
+      position: absolute;
+      left: 47px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .btn-ynaguinid:hover {
+      background: #145dd1;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
+    }
+
+    /* FACEBOOK */
+    .btn-facebook {
+      background: #1877f2;
+      position: relative;
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 80px;
+      text-align: left;
+      display: block;
+    }
+    .btn-facebook .icon {
+      position: absolute;
+      left: 47px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .btn-facebook:hover {
+      background-color: #145dd1;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(20, 93, 209, 0.6);
+    }
+
+    /* DISCORD */
+    .btn-discord {
+      background: #5865F2;
+      position: relative;
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 80px;
+      text-align: left;
+      display: block;
+    }
+    .btn-discord .icon {
+      position: absolute;
+      left: 47px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .btn-discord:hover {
+      background: #4853d9;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(72, 83, 217, 0.6);
+    }
+
+    /* EMAIL */
+    .btn-email {
+      background: #D44638;
+      position: relative;
+      width: 257px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 80px;
+      text-align: left;
+      display: block;
+      border: none;
+    }
+    .btn-email .icon {
+      position: absolute;
+      left: 47px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .btn-email:hover {
+      background: #bb3b2f;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(187, 59, 47, 0.6);
+    }
+
+    /* Email container */
+    #email-container {
+      margin: 0 auto 20px;
+      padding: 12px 20px;
+      border: 2px solid #e91e63;
+      border-radius: 25px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #e91e63;
+      width: 285px;
+      font-size: 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #email-text {
+      user-select: all;
+    }
+
+    #copy-btn {
+      background: #e91e63;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      padding: 6px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #copy-btn:hover {
+      background: #c41452;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 400px) {
+      .btn-facebook,
+      .btn-discord,
+      .btn-email,
+      .btn-ynaguinid,
+      #email-container {
+        width: 90% !important;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
 
   <img src="sol.jpg" alt="Profile" class="profile-img" />
   <h1>Solene</h1>
   <p class="username">@_soleneeqt</p>
   <p>Streamer</p>
 
-  <a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn facebook">
+  <!-- YNAGUINID -->
+  <a href="https://www.facebook.com/profile.php?id=61578331766209" class="btn-custom btn-ynaguinid" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
-    Facebook Page
+    YNAGUINID PAGE
   </a>
 
-  <a href="https://discord.gg/bPEamU9MaW" class="btn discord">
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/solene.clm" class="btn-custom btn-facebook" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="icon" alt="Facebook" />
+    Facebook
+  </a>
+
+  <!-- Discord -->
+  <a href="https://discord.gg/bPEamU9MaW" class="btn-custom btn-discord" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" class="icon" alt="Discord" />
     Discord
   </a>
 
-  <div class="btn instagram" onclick="showInstagramAlert()">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="icon" alt="Instagram" />
-    Instagram
+  <!-- Email -->
+  <button id="show-email-btn" class="btn-custom btn-email" type="button">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" alt="Gmail" />
+    Email
+  </button>
+
+  <!-- Email Container -->
+  <div id="email-container">
+    <span id="email-text">📩 clmsolene20@gmail.com</span>
+    <button id="copy-btn">Copy</button>
   </div>
 
   <script>
-    function showInstagramAlert() {
-      alert("⚠️ Instagram is not available right now.");
+    // Mobile detection for petal count
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const PETAL_COUNT = isMobile ? 30 : 60; // fewer petals on mobile
+
+    // Canvas & petal setup
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
     }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Petal class (rose-like petal shape)
+    class Petal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = 8 + Math.random() * 5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = 0.5 + Math.random() * 0.5;
+        this.angle = Math.random() * 2 * Math.PI;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+        this.color = `rgba(255, 192, 203, ${0.6 + Math.random() * 0.4})`; // rose pink
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.angle += this.rotationSpeed;
+
+        if (this.y > height + this.size) {
+          this.x = Math.random() * width;
+          this.y = -this.size;
+        }
+        if (this.x > width + this.size) this.x = -this.size;
+        else if (this.x < -this.size) this.x = width + this.size;
+      }
+      draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+
+        // Draw simple rose-like petal shape (oval + subtle curves)
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(
+          this.size * 0.2, -this.size * 0.6,
+          this.size * 0.8, -this.size * 0.4,
+          0, this.size
+        );
+        ctx.bezierCurveTo(
+          -this.size * 0.8, -this.size * 0.4,
+          -this.size * 0.2, -this.size * 0.6,
+          0, 0
+        );
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }
+
+    // Create petals array
+    const petals = [];
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      petals.push(new Petal());
+    }
+
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(p => {
+        p.update();
+        p.draw(ctx);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Email button toggle & copy
+    const showEmailBtn = document.getElementById('show-email-btn');
+    const emailContainer = document.getElementById('email-container');
+    const copyBtn = document.getElementById('copy-btn');
+    const emailText = document.getElementById('email-text').textContent;
+
+    showEmailBtn.addEventListener('click', () => {
+      const isVisible = emailContainer.style.display === 'flex';
+      emailContainer.style.display = isVisible ? 'none' : 'flex';
+      showEmailBtn.innerHTML = `
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="icon" alt="Gmail" />
+        ${isVisible ? 'Email' : 'Hide Email'}
+      `;
+    });
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(emailText)
+        .then(() => {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+          }, 2000);
+        })
+        .catch(() => {
+          alert('Failed to copy email.');
+        });
+    });
+
+    // Profile bounce pause on tap (mobile)
+    const profileImg = document.querySelector('.profile-img');
+    profileImg.addEventListener('touchstart', () => {
+      if (profileImg.style.animationPlayState === 'paused') {
+        profileImg.style.animationPlayState = 'running';
+      } else {
+        profileImg.style.animationPlayState = 'paused';
+      }
+    });
+
   </script>
 
 </body>
